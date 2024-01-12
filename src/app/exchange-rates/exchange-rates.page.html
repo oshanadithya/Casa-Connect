@@ -1,0 +1,38 @@
+<ion-header translcant="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="setClose()">Back</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <ion-header style="font-size: x-large;">Exchange Rates</ion-header>
+  <br>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <th>Currency</th>
+      </ion-col>
+      <ion-col>
+        <th>Rate</th>
+      </ion-col>
+      <ion-col>
+        <th>Date</th>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngFor="let rate of rates">
+      <ion-col>
+        1 USD
+      </ion-col>
+      <ion-col>
+        {{rate.rate}} LKR
+      </ion-col>
+      <ion-col>
+        {{rate.date}}
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-label style="margin-top: 30px;">For additional Reference please tap</ion-label>
+  <ion-button fill="clear" href="https://www.casa.lk/exchange-rates/">here</ion-button>
+</ion-content>

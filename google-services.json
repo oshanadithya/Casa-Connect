@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "268141900835",
+    "firebase_url": "https://casa-android-c913e-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "casa-android-c913e",
+    "storage_bucket": "casa-android-c913e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:268141900835:android:3a66d4c73c215dfecd2d96",
+        "android_client_info": {
+          "package_name": "io.ionic.casa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "268141900835-3hbnvirj5h972ira32itk0tblnk3orqe.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.ionic.casa",
+            "certificate_hash": "8447657b154a672cf03a1295349ee69236bdf6f0"
+          }
+        },
+        {
+          "client_id": "268141900835-ulng0i5n4jmr72n8mq18bfg5uokj7701.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCV4FENtTejSX9O5ektGd3bnpMMg1HJkiM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "268141900835-ulng0i5n4jmr72n8mq18bfg5uokj7701.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

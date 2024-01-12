@@ -1,0 +1,67 @@
+<ion-content [fullscreen]="true">
+	<div style="margin-left: auto; margin-right: auto; position: relative; top: 25%;">
+		  <ion-title style="position: relative; margin-top: 10%; margin-bottom: 25%; ">
+			  <img alt="logo" id="header_logo" width="auto" src="../../assets/Casa_Connect_Logo.png">
+		  </ion-title>
+  
+		  <ion-grid>
+			<ion-row class="abt">
+				<ion-col>
+					<ion-button class="color" (click)="openSignIn()" style="margin-left: 10%; margin-right: 10%;" expand="block" shape="round">
+					  <ion-icon name="logo-apple" style="padding-right: 0.6em;"></ion-icon>
+					  <div style="font-size: x-small; font-weight: bold;" >Sign In with Apple</div>
+					</ion-button>
+				</ion-col>
+			</ion-row>
+			<ion-row class="abt">
+			  <ion-col>
+				<ion-button (click)="signIn()" style="margin-left: 10%; margin-right: 10%;" color="danger" expand="block" shape="round">
+				  <ion-icon name="logo-google" style="padding-right: 0.6em;"></ion-icon>
+				  <div style="font-size: x-small; font-weight: bold" >Sign in with Google</div>
+				</ion-button>
+			  </ion-col>
+			</ion-row>
+			<ion-row class="abt">
+			  <ion-col>
+				  <ion-button (click)="setOpen(true)" style="margin-left: 10%; margin-right: 10%;" color="warning" expand="block" shape="round">
+					<ion-icon name="mail" style="padding-right: 0.6em;"></ion-icon>
+					<div style="font-size: x-small; font-weight: bold" >Sign in with Email</div>
+				  </ion-button>
+			  </ion-col>
+			</ion-row>
+		  </ion-grid>
+	  </div>
+	  <ion-modal [isOpen]="isModalOpen">
+		  <ng-template>
+			  <ion-header>
+				  <ion-toolbar>
+					  <ion-buttons slot="start">
+						  <ion-button (click)="setClose(false)">Back</ion-button>
+					  </ion-buttons>
+				  </ion-toolbar>
+			  </ion-header>
+			  <ion-content class="ion-padding">
+				  <ion-card style="position: static;" color="medium">
+					  <ion-card-content>
+						  <form [formGroup]="credentials" (ngSubmit)="login()">
+							  <ion-item fill="outline" class="ion-margin-bottom" style="border-radius: 10px;">
+								  <ion-input type="email" placeholder="Official Email" formControlName="email"></ion-input>
+								  <ion-note slot="error" *ngIf="(email!.dirty || email!.touched) && email!.errors">Email is invalid</ion-note>
+							  </ion-item>
+							  <ion-item fill="outline" class="ion-margin-bottom" style="border-radius: 10px;">
+								  <ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
+								  <ion-note slot="error" *ngIf="(password!.dirty || password!.touched) && password!.errors">Password is invalid</ion-note>
+							  </ion-item>
+							  <ion-button type="submit" style="width: 80px; height: 40px;" [disabled]="!credentials!.valid" (click)="setOpen(false)">Login</ion-button>
+							  <ion-button fill="clear" (click)="forgetPassword()" >Forget Password?</ion-button>
+							  <br>
+							  <br>
+							  <p>If new user please register!</p>
+							  <ion-button type="button" style="width: 80px; height: 40px;" (click)="setClose2(false)">Register</ion-button>
+						  </form>
+					  </ion-card-content>
+				  </ion-card>
+			  </ion-content>
+		  </ng-template>
+	  </ion-modal>
+  </ion-content>

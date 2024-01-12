@@ -1,0 +1,63 @@
+<div class="ion-page" id="main-content">
+  <ion-content class="ion-padding">
+    <!-- <ion-toolbar slot="fixed">
+      <ion-buttons slot="start"></ion-buttons>
+      <ion-searchbar style="margin-top: 12px;" [debounce]="1000" show-clear-button="focus" [disabled]="false" animated="true"></ion-searchbar>
+      <ion-buttons slot="end"></ion-buttons>
+    </ion-toolbar> -->
+
+    <!-- <br> -->
+    <!-- <br> -->
+    <!-- <br> -->
+    <br>
+    <br>
+
+    <ion-toolbar slot="fixed">
+      <ion-buttons slot="start" style="margin-left: 25%;"></ion-buttons>
+        <div style="overflow-x:scroll;">
+          <ion-segment size="x-small" className="ion-nowrap" [scrollable]="true">
+            <ion-segment-button value="N" (click)="type('N')" style="font-size: x-small;">
+              Network
+            </ion-segment-button>
+            <ion-segment-button value="C" (click)="type('C')" style="font-size: x-small;">
+              My Connections
+            </ion-segment-button>
+          </ion-segment>
+        </div>
+      <ion-buttons slot="end" style="margin-right: 25%;"></ion-buttons>
+    </ion-toolbar>
+
+    <ion-content *ngIf="value == 'N'" style="margin-top: 10px;">
+      <ion-header style="font-size: x-large; margin-left: 20px; margin-top: 20px">Networks</ion-header>
+      <ion-content *ngIf="(users | async) as user$">
+        <ion-list  class="ion-margin-top" line="none">
+          <ion-item *ngFor="let item of user$" (click)="connectUser(item)" lines="full" detail="true" style="width: 90%; margin:auto; border-radius: 5px; padding-bottom: 1vh; margin-top: 10px;">
+            <ion-avatar slot="start">
+              <img [src]="item?.photo"/>
+            </ion-avatar>
+            <ion-text slot="start" color="medium">{{item?.name}}</ion-text>
+          </ion-item>
+        </ion-list>
+      </ion-content>  
+    </ion-content>
+
+    <ion-content *ngIf="value == 'C'" style="margin-top: 10px;">
+      <ion-list *ngIf="(connections | async) as rooms">
+        <ion-header style="font-size: x-large; margin-left: 20px; margin-top: 20px">My Connections</ion-header>
+        <br>
+        <ion-item 
+          *ngFor="let item of rooms" lines="full" detail="true" style="width: 90%; margin:auto; border-radius: 5px; padding-bottom: 1vh; margin-top: 10px;"
+        >
+          <ng-container *ngIf="(item?.user | async) as user">
+            <ion-item (click)="connectedUser(user)">
+              <ion-avatar slot="start">
+                <img [src]="getUser(user)?.photo" />
+              </ion-avatar>
+              <ion-text slot="start" color="medium">{{getUser(user)?.name}}</ion-text>
+            </ion-item>
+          </ng-container>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-content>
+</div>

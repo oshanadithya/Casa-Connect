@@ -1,0 +1,117 @@
+<ion-header translcant="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">Back</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+  <ion-content class="ion-padding">
+    <h1 style="margin-left: 20px;">Company Details</h1>
+    <ion-card style="position: static;" color="medium">
+      <ion-card-content>
+        <ion-grid>
+          <ion-row *ngIf="org.company_name">
+            <ion-col size="4"><p><b>Name :</b></p></ion-col>
+            <ion-col size="5"><p>{{org.company_name}}</p></ion-col>
+          </ion-row>
+          <ion-row *ngIf="org.address_1">
+            <ion-col size="4"><p><b>Address 1 :</b></p></ion-col>
+            <ion-col size="5"><p>{{org.address_1}}</p></ion-col>
+          </ion-row>
+          <ion-row *ngIf="org.address_2">
+            <ion-col size="4"><p><b>Address 2 :</b></p></ion-col>
+            <ion-col size="5"><p>{{org.address_2}}</p></ion-col>
+          </ion-row>
+          <ion-row *ngIf="org.city">
+            <ion-col size="4"><p><b>City :</b></p></ion-col>
+            <ion-col size="5"><p>{{org.city}}</p></ion-col>
+          </ion-row>
+          <ion-row *ngIf="org.telephone">
+            <ion-col size="4"><p><b>Telephone :</b></p></ion-col>
+            <ion-col size="5"><p>{{org.telephone}}</p></ion-col>
+            <ion-col size="3">
+              <a href="tel:{{org.telephone}}">
+                <ion-button style="height: 30px; width: 60px;">
+                  <ion-icon name="call"></ion-icon>
+                </ion-button>
+              </a>
+            </ion-col>
+          </ion-row>
+          <ion-row *ngIf="org.email_1">
+            <ion-col size="4"><p><b>Email 1 :</b></p></ion-col>
+            <ion-col size="5"><p>{{org.email_1}}</p></ion-col>
+            <ion-col size="3">
+              <a href="mailto:{{org.email_1}}">
+                <ion-button style="height: 30px; width: 60px;">
+                  <ion-icon name="mail"></ion-icon>
+                </ion-button>
+              </a>
+            </ion-col>
+          </ion-row>
+          <ion-row *ngIf="org.email_2">
+            <ion-col size="4"><p><b>Email 2 :</b></p></ion-col>
+            <ion-col size="5"><p>{{org.email_2}}</p></ion-col>
+            <ion-col size="3">
+              <a href="mailto:{{org.email_2}}">
+                <ion-button style="height: 30px; width: 60px;">
+                  <ion-icon name="mail"></ion-icon>
+                </ion-button>
+              </a>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>  
+    </ion-card>
+    <h1 style="margin-left: 20px;">Member Details</h1>
+    <ion-card *ngFor="let mc of member_contacts" style="position: static;" color="medium">
+      <ion-card-content>
+        <ion-grid>          
+          <ion-row *ngIf="mc.contact_name">
+            <ion-col size="4"><p><b>Name :</b></p></ion-col>
+            <ion-col size="5"><p>{{mc.salutation}} {{mc.contact_name}}</p></ion-col>
+          </ion-row>
+          <ion-row *ngIf="mc.designation">
+            <ion-col size="4"><p><b>Designation :</b></p></ion-col>
+            <ion-col size="5"><p>{{mc.designation}}</p></ion-col>
+          </ion-row>
+          <ion-row *ngIf="mc.mobile">
+            <ion-col size="4"><p><b>Mobile :</b></p></ion-col>
+            <ion-col size="5"><p>{{mc.mobile}}</p></ion-col>
+            <ion-col size="3">
+              <a href="tel:{{mc.mobile}}">
+                <ion-button style="height: 30px; width: 60px;">
+                  <ion-icon name="call"></ion-icon>
+                </ion-button>
+              </a>
+            </ion-col>
+          </ion-row>
+          <ion-row *ngIf="mc.telephone">
+            <ion-col size="4"><p><b>Telephone :</b></p></ion-col>
+            <ion-col size="5"><p>{{mc.telephone}}</p></ion-col>
+            <ion-col size="3">
+              <a href="tel:{{mc.telephone}}">
+                <ion-button style="height: 30px; width: 60px;">
+                  <ion-icon name="call"></ion-icon>
+                </ion-button>
+              </a>
+            </ion-col>
+          </ion-row>
+          <ion-row *ngIf="mc.fax">
+            <ion-col size="4"><p><b>Fax :</b></p></ion-col>
+            <ion-col size="5"><p>{{mc.fax}}</p></ion-col>
+          </ion-row>
+          <ion-row *ngIf="mc.email">
+            <ion-col size="4"><p><b>Email :</b></p></ion-col>
+            <ion-col size="5"><p>{{mc.email}}</p></ion-col>
+            <ion-col size="3">
+              <a href="mailto:{{mc.email}}">
+                <ion-button style="height: 30px; width: 60px;">
+                  <ion-icon name="mail"></ion-icon>
+                </ion-button>
+              </a>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+  </ion-content>

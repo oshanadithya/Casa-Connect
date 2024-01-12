@@ -1,0 +1,7 @@
+{
+  "name": "CASA Connect",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

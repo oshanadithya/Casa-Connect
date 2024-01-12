@@ -1,0 +1,52 @@
+<div class="ion-page" id="main-content">
+  <ion-content class="ion-padding">
+    <ion-refresher slot="fixed" disabled="false" (ionRefresh)="doRefresh($event)">  
+        <ion-refresher-content  
+        pullingIcon="arrow-dropdown"  
+        pullingText="Pull to refresh"  
+        refreshingSpinner="circles"  
+        refreshingText="Refreshing...">
+      </ion-refresher-content>  
+    </ion-refresher> 
+    <ion-card style="margin-top: 5%;" *ngFor="let event of events">
+      <ion-card-header>
+        <ion-card-title style="font-size: x-large; text-align: center;">{{event.event_name}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content style="font-size: small; text-align: justify;" [innerHTML]="event.description"></ion-card-content>
+      <img class="img-card" src="https://casa.evokemusic.net/storage/images/{{event.image}}" />
+      <ion-card-content>
+
+          <ion-label>
+            <p style="font-size: x-small;"><b>Venue:</b></p>
+          </ion-label>
+          <ion-label>
+            <p style="font-size: xx-small;">{{event.venue}}</p>
+          </ion-label>
+          <br>
+          <ion-label>
+            <p style="font-size: x-small;"><b>Date & Time:</b></p>
+          </ion-label>
+          <ion-label>
+            <p style="font-size: xx-small;">{{event.date}}</p>
+          </ion-label>
+          <ion-label>
+            <p style="font-size: xx-small;">{{event.start_time}}</p>
+          </ion-label>
+          <br>
+          <!-- <ion-item *ngIf="member != false"> -->
+            <ion-button [disabled]="true" size="small" style="float: left; margin-bottom: 10px;">
+              Reserve
+            </ion-button>
+            <ion-button *ngIf="event.status_in_calander == 0" (click)="remind(event.id)" [disabled]="false" size="small" style="float: right; margin-bottom: 10px;">
+              Add Reminder
+            </ion-button>
+          <!-- </ion-item> -->
+      </ion-card-content>
+    </ion-card>
+    <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+      <ion-button [disabled]="false" (click)="gotoReminders()" size="small" style="margin-left: auto; width: 80px; height: 30px; font-size: x-small;" >
+        Reminders
+      </ion-button>
+    </ion-fab>
+  </ion-content>
+</div>

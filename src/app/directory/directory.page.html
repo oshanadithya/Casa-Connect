@@ -1,0 +1,181 @@
+<div class="ion-page" id="main-content">
+  <ion-content class="ion-padding" >
+          <ion-toolbar slot="fixed">
+            <ion-buttons slot="start"></ion-buttons>
+            <ion-searchbar style="margin-top: 12px;" *ngIf="value == 'M'" [debounce]="1000" (ionInput)="handleDirectory($event)" show-clear-button="focus" [disabled]="false" animated="true"></ion-searchbar>
+            <ion-searchbar style="margin-top: 12px;" *ngIf="value == 'AM'" [debounce]="1000" (ionInput)="handleAM($event)" show-clear-button="focus" [disabled]="false" animated="true"></ion-searchbar>
+            <ion-searchbar style="margin-top: 12px;" *ngIf="value == 'GI'" [debounce]="1000" (ionInput)="handleGI($event)" show-clear-button="focus" [disabled]="false" animated="true"></ion-searchbar>
+            <ion-searchbar style="margin-top: 12px;" *ngIf="value == 'TA'" [debounce]="1000" (ionInput)="handleTA($event)" show-clear-button="focus" [disabled]="false" animated="true"></ion-searchbar>
+            <ion-searchbar style="margin-top: 12px;" *ngIf="value == 'SR'" [debounce]="1000" (ionInput)="handleSR($event)" show-clear-button="focus" [disabled]="false" animated="true"></ion-searchbar>
+            <ion-searchbar style="margin-top: 12px;" *ngIf="value == 'BLS'" [debounce]="1000" (ionInput)="handleBL($event)" show-clear-button="focus" [disabled]="false" animated="true"></ion-searchbar>
+            <ion-searchbar style="margin-top: 12px;" *ngIf="value == 'AI'" [debounce]="1000" (ionInput)="handleAI($event)" show-clear-button="focus" [disabled]="false" animated="true"></ion-searchbar>
+            <ion-searchbar style="margin-top: 12px;" *ngIf="value == 'SS'" [debounce]="1000" (ionInput)="handleSS($event)" show-clear-button="focus" [disabled]="false" animated="true"></ion-searchbar>
+            <ion-searchbar style="margin-top: 12px;" *ngIf="value == 'IC'" [debounce]="1000" (ionInput)="handleIC($event)" show-clear-button="focus" [disabled]="false" animated="true"></ion-searchbar>
+            <ion-searchbar style="margin-top: 12px;" *ngIf="value == 'CS'" [debounce]="1000" (ionInput)="handleCS($event)" show-clear-button="focus" [disabled]="false" animated="true"></ion-searchbar>
+            <ion-searchbar style="margin-top: 12px;" *ngIf="value == 'PIC'" [debounce]="1000" (ionInput)="handlePIC($event)" show-clear-button="focus" [disabled]="false" animated="true"></ion-searchbar>
+            <ion-searchbar style="margin-top: 12px;" *ngIf="value == 'ICT'" [debounce]="1000" (ionInput)="handleICT($event)" show-clear-button="focus" [disabled]="false" animated="true"></ion-searchbar>
+            <ion-searchbar style="margin-top: 12px;" *ngIf="value == 'ML'" [debounce]="1000" (ionInput)="handleML($event)" show-clear-button="focus" [disabled]="false" animated="true"></ion-searchbar>
+            <ion-buttons slot="end"></ion-buttons>
+          </ion-toolbar>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <ion-toolbar slot="fixed" style="margin-top: 60px;">
+      <div style="overflow-x:scroll;">
+          <ion-segment size="x-small" className="ion-nowrap" [scrollable]="true">
+              <ion-segment-button value="M" (click)="type('M')" style="font-size: x-small;">
+                  Members
+              </ion-segment-button>
+              <ion-segment-button value="AM" (click)="type('AM')" style="font-size: x-small;">
+                  Associate Members
+              </ion-segment-button>
+              <ion-segment-button value="GI" (click)="type('GI')" style="font-size: x-small;">
+                  Government Institutions
+              </ion-segment-button>
+              <ion-segment-button value="TA" (click)="type('TA')" style="font-size: x-small;" >
+                  Trade Associations
+              </ion-segment-button>
+              <ion-segment-button value="SR" (click)="type('SR')" style="font-size: x-small;" >
+                  Ship Repairers
+              </ion-segment-button>
+              <ion-segment-button value="BLS" (click)="type('BLS')" style="font-size: x-small;">
+                  Bunker Lubricant Suppliers
+              </ion-segment-button>
+              <ion-segment-button value="AI" (click)="type('AI')" style="font-size: x-small;">
+                  Academic Institutions
+              </ion-segment-button>
+              <ion-segment-button value="SS" (click)="type('SS')" style="font-size: x-small;">
+                  Ship Suppliers
+              </ion-segment-button>
+              <ion-segment-button value="IC" (click)="type('IC')" style="font-size: x-small;">
+                  Insurance Companies
+              </ion-segment-button>
+              <ion-segment-button value="CS" (click)="type('CS')" style="font-size: x-small;">
+                  Classification Societies
+              </ion-segment-button>
+              <ion-segment-button value="PIC" (click)="type('PIC')" style="font-size: x-small;">
+                  PI Clubs
+              </ion-segment-button>
+              <ion-segment-button value="ICT" (click)="type('ICT')" style="font-size: x-small;">
+                  Inland Container Terminals
+              </ion-segment-button>
+              <ion-segment-button value="ML" (click)="type('ML')" style="font-size: x-small;">
+                  Maritime Lawyers
+              </ion-segment-button>
+          </ion-segment>
+      </div>
+    </ion-toolbar>
+    <ion-card style="margin-top: 5%;">
+      <ion-card-content *ngIf="value == 'M'">
+        <ion-list>
+          <ion-item *ngFor="let dir of directory">
+            <ion-item>
+              <ion-button (click)="setOpen(dir.id)" expand="full" fill="clear">{{dir.company_name}}</ion-button>
+            </ion-item>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+
+      <ion-card-content *ngIf="value == 'AM'">
+        <ion-list>
+          <ion-item *ngFor="let am of associateMembers">
+            <ion-item>
+              <ion-button (click)="aM(am.id)" expand="full" fill="clear">{{am.company_name}}</ion-button>
+            </ion-item>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+
+      <ion-card-content *ngIf="value == 'GI'">
+        <ion-list *ngFor="let ga of governmentAssociations">
+          <ion-item>
+            <ion-button (click)="gI(ga.id)" expand="full" fill="clear">{{ga.company_name}}</ion-button>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+
+      <ion-card-content *ngIf="value == 'TA'">
+        <ion-list *ngFor="let ta of tradeAssociations">
+          <ion-item>
+            <ion-button (click)="tA(ta.id)" expand="full" fill="clear">{{ta.company_name}}</ion-button>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+
+      <ion-card-content *ngIf="value == 'SR'">
+        <ion-list *ngFor="let sr of shipRepairers">
+          <ion-item>
+            <ion-button (click)="sR(sr.id)" expand="full" fill="clear">{{sr.company_name}}</ion-button>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+
+      <ion-card-content *ngIf="value == 'BLS'">
+        <ion-list *ngFor="let bls of bunkerLubricantSup">
+          <ion-item>
+            <ion-button (click)="bL(bls.id)" expand="full" fill="clear">{{bls.company_name}}</ion-button>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+
+      <ion-card-content *ngIf="value == 'AI'">
+        <ion-list *ngFor="let ai of academicInstitutuions">
+          <ion-item>
+            <ion-button (click)="aI(ai.id)" expand="full" fill="clear">{{ai.company_name}}</ion-button>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+
+      <ion-card-content *ngIf="value == 'SS'">
+        <ion-list *ngFor="let ss of shipSuppliers">
+          <ion-item>
+            <ion-button (click)="sS(ss.id)" expand="full" fill="clear">{{ss.company_name}}</ion-button>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+
+      <ion-card-content *ngIf="value == 'IC'">
+        <ion-list *ngFor="let ic of insurenceCompanies">
+          <ion-item>
+            <ion-button (click)="iC(ic.id)" expand="full" fill="clear">{{ic.company_name}}</ion-button>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+
+      <ion-card-content *ngIf="value == 'CS'">
+        <ion-list *ngFor="let cs of classificationSocieties">
+          <ion-item>
+            <ion-button (click)="cS(cs.id)" expand="full" fill="clear">{{cs.company_name}}</ion-button>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+      
+      <ion-card-content *ngIf="value == 'PIC'">
+        <ion-list *ngFor="let pic of piCLubs">
+          <ion-item>
+            <ion-button (click)="pI(pic.id)" expand="full" fill="clear">{{pic.company_name}}</ion-button>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+
+      <ion-card-content *ngIf="value == 'ICT'">
+        <ion-list *ngFor="let ict of iCT">
+          <ion-item>
+            <ion-button (click)="icT(ict.id)" expand="full" fill="clear">{{ict.company_name}}</ion-button>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+
+      <ion-card-content *ngIf="value == 'ML'">
+        <ion-list *ngFor="let ml of maritimeLawyers">
+          <ion-item>
+            <ion-button (click)="mL(ml.id)" expand="full" fill="clear">{{ml.company_name}}</ion-button>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+  </ion-content>
+  
+</div>

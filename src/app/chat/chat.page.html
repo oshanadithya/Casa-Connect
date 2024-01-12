@@ -1,0 +1,41 @@
+<ion-header translcant="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <!-- <ion-button (click)="back()">Back</ion-button> -->
+      <ion-back-button defaultHref="menu/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{name}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" [scrollEvents]="true">
+
+  <!-- <app-empty-screen
+    *ngIf="(chats | async)?.length == 0" [model]="model"
+  >
+  </app-empty-screen> -->
+
+  <ion-list
+  lines="none"
+  *ngIf="(chats | async) as chat$"
+  >
+    <ion-item-group class="chats-group" *ngFor="let chat of chat$">
+      <app-chat-box [chat]="chat" [current_user_id]="chatService.currentUserId"></app-chat-box>
+    </ion-item-group>
+  </ion-list>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-textarea autoGrow rows="1" placeholder="Send message" class="ion-text-center" [(ngModel)]="message">
+    </ion-textarea>
+    <ion-buttons slot="end">
+      <ion-fab-button *ngIf="!isLoading" size="small" (click)="sendMessage()">
+        <ion-icon name="send"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button *ngIf="!isLoading" size="small">
+        <ion-spinner name="crescent" color="white"></ion-spinner>
+      </ion-fab-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

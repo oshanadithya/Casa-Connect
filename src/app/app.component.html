@@ -1,0 +1,43 @@
+<ion-app>
+<!-- 
+  <ion-menu contentId="main-content">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Menu</ion-title>
+      </ion-toolbar>
+      <img class="img-card" style="width: 200px; margin-left: 15%; margin-top: 8%;" src="../../assets/Default@2x~universal~anyany.png" >
+      <img class="img-card" style="width: 200px; margin-left: 15%; margin-top: 8%;" src="../../assets/Casa_Connect_Logo.png" >
+      <ion-label style="text-align: center; position: relative;">
+        <p>Version 1.0</p>
+        <p>Design & Developed </p>
+        <p>by Evoke International</p>
+      </ion-label>
+    </ion-header>
+    <ion-content class="ion-padding">
+
+        <ion-button (click)="signOut()" [disabled]="false" style="margin-top: 15%; margin-left: 10%; margin-right: 10%; margin-top: 60%;" color="danger" expand="block" shape="round">
+          <ion-icon name="exit" style="padding-right: 0.6em;"></ion-icon>
+          <div style="font-size: x-small; font-weight: bold" >Sign Out</div>
+        </ion-button>
+
+    </ion-content>
+  </ion-menu> -->
+  <ion-router-outlet></ion-router-outlet>
+
+<!--   <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button auto-hide="false" style="position: relative; margin: auto;"></ion-menu-button>
+      </ion-buttons>
+      <ion-searchbar [disabled]="true" style="margin-top: 2%;" placeholder="Search" animated="true"></ion-searchbar>
+      <ion-buttons slot="end" style="position: relative; margin: auto;">
+        <ion-button tappable [disabled]="true">
+          <ion-icon color="primary" name="chatbox-outline" >
+          </ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header> -->
+
+  
+</ion-app>

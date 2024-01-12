@@ -1,0 +1,120 @@
+<ion-menu contentId="main-content">
+  <ion-header>
+    <ion-toolbar>
+    <ion-item *ngIf="username">
+      <ion-avatar slot="start">
+        <img [src]="username.imageUrl" />
+      </ion-avatar>
+      <ion-label>
+        {{username.givenName}} {{username.familyName}}
+        <!-- <p>{{username.email}}</p> -->
+      </ion-label>
+    </ion-item>
+
+    <ion-item *ngIf="user_email">
+      <ion-avatar slot="start">
+        <img [src]="user_email.imageUrl" />
+      </ion-avatar>
+      <ion-label>
+        <p>{{user_email}}</p>
+      </ion-label>
+    </ion-item>
+
+    <ion-item *ngIf="apple_email">
+      <ion-avatar slot="start">
+        <img [src]="apple_email.imageUrl" />
+      </ion-avatar>
+      <ion-label>
+        <p>{{apple_email}}</p>
+      </ion-label>
+    </ion-item>
+
+    </ion-toolbar>
+
+    <img class="img-card" style="width: 200px; margin-left: 17%; margin-right: 15%; margin-top: 15%;" src="../../assets/Default@2x~universal~anyany.png" >
+    <img class="img-card" style="width: 200px; margin-left: 17%; margin-right: 15%; margin-top: 8%;" src="../../assets/Casa_Connect_Logo.png" >
+    <ion-label style="text-align: center; position: relative;">
+      <p>Version 2.2.2</p>
+      <p>Design & Developed </p>
+      <p>by Evoke International</p>
+    </ion-label>
+    <ion-list style="margin-top: 20px;">
+      <!-- <ion-item *ngIf="member != false"> -->
+      <ion-item>
+        <ion-button expand="full" fill="clear" (click)="userProfile()">User Profile</ion-button>
+      </ion-item>
+      <ion-item>
+        <ion-button expand="full" fill="clear" (click)="contactUs()">Contact Us</ion-button>
+      </ion-item>
+      <ion-item>
+        <ion-button expand="full" fill="clear" (click)="privacy()">Privacy Policy</ion-button>
+      </ion-item>
+      <ion-item>
+        <ion-button expand="full" fill="clear" (click)="deleteAccount()" >Account Deletion</ion-button>
+      </ion-item>
+    </ion-list>
+    <ion-button (click)="signOut()" [disabled]="false" style="margin-left: 10%; margin-right: 10%; margin-top: 20px;" color="danger" expand="block" shape="round">
+      <ion-icon name="exit" style="padding-right: 0.6em;"></ion-icon>
+      <div style="font-size: x-small; font-weight: bold" >Sign Out</div>
+    </ion-button>
+  </ion-header>
+</ion-menu>
+
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button auto-hide="false" size="x-small"></ion-menu-button>
+    </ion-buttons>
+    <!-- <ion-searchbar [disabled]="false" placeholder="Search" animated="true"></ion-searchbar> -->
+    <!-- <ion-searchbar [debounce]="1000" (ionInput)="handleInput($event)" show-clear-button="focus" [disabled]="false" placeholder="Search" animated="true"></ion-searchbar> -->
+    <ion-buttons slot="end">
+      <ion-button tappable [disabled]="false" (click)="messages()" >
+        <ion-icon color="primary" name="chatbox-outline" size="x-small">
+        </ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-button *ngIf="value == 1" style="font-size: x-small; margin-top: 10px; margin-left: 10px; margin-bottom: 10px;" (click)="exchangePage()" size="small" fill="outline">
+    Exchange Rates
+  </ion-button>
+  <ion-label style="font-size: x-small; margin-top: 10px; margin-left: 10px;" *ngIf="value == 1">
+    {{latestRate.date}} XR : USD 1 - LKR {{latestRate.rate}}
+  </ion-label>
+  <!-- "latest" endpoint - request the most recent exchange rate data
+
+  http://api.exchangeratesapi.io/v1/latest?access_key=a6e155d9c9a77eae1fa8f985dd7f8d9e
+
+      ? access_key = YOUR_ACCESS_KEY
+      & base = GBP
+      & symbols = USD,AUD,CAD,PLN,MXN
+
+  Casa, click on the URL above to get the most recent exchange
+  rates for USD, AUD, CAD, PLN and MXN -->
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button tab="home" (click)="val(1)">
+        <ion-icon name="home-outline"></ion-icon>
+        <div>Home</div>
+      </ion-tab-button>
+      <ion-tab-button tab="network" (click)="val(2)">
+        <ion-icon name="people-outline"></ion-icon>
+        <div>Network </div>
+      </ion-tab-button>
+      <ion-tab-button tab="events" (click)="val(3)">
+        <ion-icon name="calendar-outline"></ion-icon>
+        <div>Events</div>
+      </ion-tab-button>
+      <!-- <ion-tab-button tab="community">
+        <ion-icon name="globe-outline"></ion-icon>
+        <div>Community</div>
+      </ion-tab-button> -->
+      <ion-tab-button tab="directory" (click)="val(5)">
+        <ion-icon name="folder-outline"></ion-icon>
+        <div>Directory</div>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-content>

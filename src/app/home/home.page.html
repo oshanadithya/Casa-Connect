@@ -1,0 +1,82 @@
+<div class="ion-page" id="main-content" >
+  <ion-content class="ion-padding">
+      <!-- <ion-fab slot="fixed" vertical="top" horizontal="start">
+        <ion-card style="width: 80%; height: 10%;"> -->
+        <!-- <ion-fab-button> -->
+          <!-- <ion-button href="https://www.casa.lk/exchange-rates" size="small" fill="outline">
+            Exchange Rates
+          </ion-button> -->
+        <!-- </ion-fab-button> -->
+        <!-- </ion-card>
+      </ion-fab> -->
+    <ion-refresher slot="fixed" disabled="false" (ionRefresh)="doRefresh($event)">  
+      <ion-refresher-content  
+        pullingIcon="arrow-dropdown"  
+        pullingText="Pull to refresh"  
+        refreshingSpinner="circles"  
+        refreshingText="Refreshing...">
+      </ion-refresher-content>  
+    </ion-refresher>
+    <ion-card style="margin-top: 5%;" *ngFor="let paper of news">
+      <ion-card-header>
+        <ion-card-title style="font-size: large; text-align: left;" >{{paper.headline}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content style="font-size: small; text-align: justify;">
+        {{paper.synopsys}}
+      </ion-card-content>
+      <img class="img-card"  src="https://casa.evokemusic.net/storage/images/{{paper.image}}">
+      <div id="tag" style="font-size: smaller; margin-left: 2%; text-align: center; font-weight: bold; margin-right: 2%; background-color: rgb(58, 62, 66); color: rgb(185, 183, 183);" >
+        {{paper.image_tagline}}
+      </div>
+      <ion-button fill="clear" [disabled]="false">
+        <ion-icon name="thumbs-up-outline"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear" [disabled]="false">
+        <ion-icon name="chatbubble-outline"></ion-icon>
+      </ion-button>
+      <ion-button (click)="setOpen(paper.id)" size="small" style="float: right; margin: 15px;" shape="round" fill="outline">
+        More
+      </ion-button>
+      <ion-modal [isOpen]="isModalOpen">
+        <ng-template>
+          <ion-header>
+            <ion-toolbar>
+              <ion-buttons slot="start">
+                <ion-button (click)="setOpen(false)">Back</ion-button>
+              </ion-buttons>
+            </ion-toolbar>
+          </ion-header>
+          <ion-content class="ion-padding">
+            <ion-card style="position: static;">
+              <ion-card-header>
+                <ion-card-title style="font-size: large; text-align: left;">{{newDesc.headline}}</ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+                <img class="img-card"  src="https://casa.evokemusic.net/storage/images/{{newDesc.image}}" />
+                <div id="tag" style="font-size: smaller; margin-left: 2%; text-align: center; font-weight: bold; margin-right: 2%; background-color: rgb(58, 62, 66); color: rgb(185, 183, 183);" >
+                  {{newDesc.image_tagline}}
+                </div>
+                <br>
+                <ion-label style="margin-top: 10%; text-align: justify;" [innerHTML]="newDesc.artical"></ion-label>
+              </ion-card-content>
+              <!-- <ion-grid *ngIf="member != false"> -->
+                <ion-grid>
+                <ion-row>
+                  <ion-col>
+                    <ion-button *ngIf="newDesc.link" [disabled]="val2" href="{{newDesc.link}}" size="small" style="float: right;" shape="round" fill="outline">
+                      View
+                    </ion-button>
+                    <ion-button *ngIf="newDesc.attachment" [disabled]="val" href="https://casa.evokemusic.net/api/news/filedownload/{{downloadNews}}" size="small" style="float: right;" shape="round" fill="outline">
+                      Download
+                    </ion-button>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-card>
+          </ion-content>
+        </ng-template>
+      </ion-modal>
+    </ion-card>
+  </ion-content>
+</div>
+

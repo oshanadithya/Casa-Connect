@@ -1,0 +1,28 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">Back</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card style="position: static;">
+    <ion-card-content style="align-items: center;">
+      <p>Please enter the OTP which has been sent to your email</p>
+      <br>
+      <ion-item style="margin: auto;">
+        <ion-input 
+          type="tel" 
+          [(ngModel)]="otpNumber1"
+          maxlength="4"
+          style="margin-left: 35%; font-size: x-large;"
+        >
+        </ion-input>
+      </ion-item>
+      <br>
+      <ion-button (click)="verify()" style="float: left; margin-bottom: 10px;" size="small">Verify OTP</ion-button>
+      <!-- <ion-button style="float: right; margin-bottom: 10px" size="small">Resend OTP</ion-button> -->
+    </ion-card-content>
+  </ion-card>
+</ion-content>

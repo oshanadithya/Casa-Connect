@@ -1,0 +1,24 @@
+<ion-header translcant="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="setClose()">Back</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <ion-card style="position: static;" color="light">
+    <ion-card-content>
+      <ion-label>
+        <p style="text-align: justify;">
+          All your user data and account will be permenantly deactivated and deleted within 30 days. You will be automatically signed out & redirected to login page.
+        </p>
+        <br>
+        <p>
+          Hope to see you again in CASA App.
+        </p>
+      </ion-label>
+      <br>
+      <ion-button size="small" style="width: 150px;" expand="block" shape="round" (click)="deleteAccount()" color="danger">Delete Account</ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
